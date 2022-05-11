@@ -6,17 +6,15 @@
     grid-template-areas: 
     ". . regionInfo"
     ". central ."
-    ". . .";
+    ". forecast .";
     grid-template-columns: 1fr 5fr 1fr;
-    grid-template-rows: 80px 3fr 80px;
+    grid-template-rows: 1fr 6fr 2fr;
 
 }
 
 .central {
     grid-area: central;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    place-self: center;
 }
 
 .regionInfo {
@@ -26,10 +24,17 @@
     gap: 8px;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .regionDate, .region {
     font-size: 16px;
     color: #fff;
     font-weight: bold;
+}
+
+.forecast {
+    grid-area: forecast;
+    grid-column-start: 1;
+    grid-column-end: 4;
 }

@@ -1,4 +1,5 @@
 import { CentralInfoComponent } from 'components/central-info';
+import { Forecast } from 'components/forecast';
 import { httpService } from 'http-service';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -23,7 +24,7 @@ export const MainComponent = () => {
 
     return (
         <>
-            { weather && (
+            { weather && forecast && (
                 <div className={styles.main}>
                     <div className={styles.central}>
                         <CentralInfoComponent weather={weather} />
@@ -37,6 +38,9 @@ export const MainComponent = () => {
                             {' '}
                             {weather.name}
                         </div>
+                    </div>
+                    <div className={styles.forecast}>
+                        <Forecast forecast={forecast} />
                     </div>
                 </div>
             )}

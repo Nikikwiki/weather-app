@@ -4,26 +4,25 @@
     stroke-width: 2;
 }
 
-.content {
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 12px;
+}
+
+.forecastDay {
     display: flex;
     flex-direction: column;
     align-items: center;
-    user-select: none;
+    gap: 8px;
 }
 
-.description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.degrees {
+.forecastWeek {
     color: #fff;
-    font-size: 42px;
-    font-weight: bold;
+    font-size: 16px;
 }
 
-.status {
+.forecastTemp {
     color: #fff;
-    font-size: 22px;
 }
