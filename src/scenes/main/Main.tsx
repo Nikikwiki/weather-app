@@ -1,7 +1,8 @@
 import { CentralInfoComponent } from 'components/central-info';
 import { httpService } from 'http-service';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import './styles.scss';
+import styles from './styles.scss';
 
 export const MainComponent = () => {
     const [ weather, setWeather ] = useState<any>(null);
@@ -12,7 +13,6 @@ export const MainComponent = () => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             httpService.getWeather(lat, lon).then(res => {
-                console.log(res);
                 setWeather(res[0].data);
                 setForecast(res[1].data);
             });
@@ -22,8 +22,24 @@ export const MainComponent = () => {
     }, []);
 
     return (
-        <div className='main'>
-            {weather && <CentralInfoComponent weather={weather} />}
-        </div>
+        <>
+            { weather && (
+                <div className={styles.main}>
+                    <div className={styles.central}>
+                        <CentralInfoComponent weather={weather} />
+                    </div>
+                    <div className={styles.regionInfo}>
+                        <div className={styles.regionDate}>{moment(new Date().getTime()).format('DD.MM.YYYY')}</div>
+                        <div className={styles.region}>
+                            {weather.sys.country}
+                            {' '}
+                            -
+                            {' '}
+                            {weather.name}
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
