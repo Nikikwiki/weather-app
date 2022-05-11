@@ -1,4 +1,4 @@
-import { Drawer } from '@mui/material';
+import { Divider, Drawer } from '@mui/material';
 import React from 'react';
 import styles from './styles.scss';
 
@@ -9,9 +9,19 @@ export const Sidebar = ({ weather, openSidebar }: any) => {
                 anchor='left'
                 open={openSidebar}
                 variant="persistent"
-                className={styles.drawer}
+                sx={{
+                    width: '20vw',
+                    minWidth: '260px',
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: '20vw',
+                        minWidth: '260px',
+                        boxSizing: 'border-box'
+                    }
+                }}
             >
-                <div>12341234123412341234</div>
+                <div></div>
+                <Divider />
             </Drawer>
         </div>
     );
