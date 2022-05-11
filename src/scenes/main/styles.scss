@@ -1,10 +1,9 @@
 .main {
-    background-color: #42a5f5;
     width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-areas: 
-    ". . regionInfo"
+    "sidebar . regionInfo"
     ". central ."
     ". forecast .";
     grid-template-columns: 1fr 5fr 1fr;
@@ -22,9 +21,11 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     user-select: none;
+    padding-top: 16px;
+    padding-right: 16px;
 }
 
 .regionDate, .region {
@@ -37,4 +38,13 @@
     grid-area: forecast;
     grid-column-start: 1;
     grid-column-end: 4;
+    align-self: flex-end;
+    margin-bottom: 16px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    place-self: start;
+    margin-left: 16px;
+    margin-top: 16px;
 }

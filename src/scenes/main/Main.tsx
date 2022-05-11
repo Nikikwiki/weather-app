@@ -1,13 +1,19 @@
 import { CentralInfoComponent } from 'components/central-info';
 import { Forecast } from 'components/forecast';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
+import { useTheme } from '@mui/material/styles';
 import { httpService } from 'http-service';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
+import { Sidebar } from 'components/sidebar';
 import styles from './styles.scss';
 
 export const MainComponent = () => {
     const [ weather, setWeather ] = useState<any>(null);
     const [ forecast, setForecast ] = useState<any>(null);
+    const [ openSidebar, setOpenSidebar ] = useState<boolean>(false);
+    const theme = useTheme();
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -23,9 +29,9 @@ export const MainComponent = () => {
     }, []);
 
     return (
-        <>
+        <div>
             { weather && forecast && (
-                <div className={styles.main}>
+                <div className={styles.main} style={{ backgroundColor: theme.palette.primary.main }}>
                     <div className={styles.central}>
                         <CentralInfoComponent weather={weather} />
                     </div>
@@ -39,11 +45,17 @@ export const MainComponent = () => {
                             {weather.name}
                         </div>
                     </div>
+                    <div className={styles.sidebar}>
+                        <IconButton onClick={() => setOpenSidebar(true)}>
+                            <MenuIcon />
+                        </IconButton>
+                    </div>
                     <div className={styles.forecast}>
                         <Forecast forecast={forecast} />
                     </div>
                 </div>
             )}
-        </>
+            <Sidebar weather={weather} openSidebar={openSidebar} />
+        </div>
     );
 };
