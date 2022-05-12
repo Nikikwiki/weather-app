@@ -1,12 +1,10 @@
-import { CentralInfoComponent } from 'components/central-info';
-import { Forecast } from 'components/forecast';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import { httpService } from 'http-service';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { Sidebar } from 'components/sidebar';
+import { CentralInfoComponent, Forecast, Sidebar } from 'components';
 import styles from './styles.scss';
 
 export const MainComponent = () => {
@@ -31,31 +29,37 @@ export const MainComponent = () => {
     return (
         <div>
             { weather && forecast && (
-                <div className={styles.main} style={{ backgroundColor: theme.palette.primary.main }}>
-                    <div className={styles.central}>
-                        <CentralInfoComponent weather={weather} />
-                    </div>
-                    <div className={styles.regionInfo}>
-                        <div className={styles.regionDate}>{moment(new Date().getTime()).format('DD.MM.YYYY')}</div>
-                        <div className={styles.region}>
-                            {weather.sys.country}
-                            {' '}
-                            -
-                            {' '}
-                            {weather.name}
+                <>
+                    <div className={styles.main} style={{ backgroundColor: theme.palette.primary.main }}>
+                        <div className={styles.central}>
+                            <CentralInfoComponent weather={weather} />
+                        </div>
+                        <div className={styles.regionInfo}>
+                            <div className={styles.regionDate}>{moment(new Date().getTime()).format('DD.MM.YYYY')}</div>
+                            <div className={styles.region}>
+                                {weather.sys.country}
+                                {' '}
+                                -
+                                {' '}
+                                {weather.name}
+                            </div>
+                        </div>
+                        <div className={styles.sidebar}>
+                            <IconButton onClick={() => setOpenSidebar(true)}>
+                                <MenuIcon />
+                            </IconButton>
+                        </div>
+                        <div className={styles.forecast}>
+                            <Forecast forecast={forecast} />
                         </div>
                     </div>
-                    <div className={styles.sidebar}>
-                        <IconButton onClick={() => setOpenSidebar(true)}>
-                            <MenuIcon />
-                        </IconButton>
-                    </div>
-                    <div className={styles.forecast}>
-                        <Forecast forecast={forecast} />
-                    </div>
-                </div>
+                    <Sidebar
+                        weather={weather}
+                        openSidebar={openSidebar}
+                        closeSidebar={() => setOpenSidebar(false)}
+                    />
+                </>
             )}
-            <Sidebar weather={weather} openSidebar={openSidebar} />
         </div>
     );
 };
