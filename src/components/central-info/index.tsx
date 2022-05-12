@@ -7,7 +7,7 @@ export const CentralInfoComponent = (props: any) => {
 
     return (
         <div className={styles.content}>
-            <SunIcon width={500} height={500} className={styles.sun} />
+            <SunIcon width={350} height={350} className={styles.sun} />
             <div className={styles.description}>
                 <div className={styles.degrees}>
                     {Math.round(weather.main.temp)}

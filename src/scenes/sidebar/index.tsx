@@ -1,23 +1,12 @@
+import React from 'react';
 import { Divider, Drawer } from '@mui/material';
-import React, { useEffect, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import moment from 'moment';
-import { useTheme } from '@mui/material/styles';
+import { Clock } from 'components';
 import styles from './styles.scss';
 
 export const Sidebar = ({ weather, openSidebar, closeSidebar }: any) => {
-    const [ time, setTime ] = useState(moment(new Date()).format('LTS'));
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(moment(new Date()).format('LTS'));
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
-    const theme = useTheme();
-
     const Header = () => {
         return (
             <div className={styles.sidebarHeader}>
@@ -79,14 +68,6 @@ export const Sidebar = ({ weather, openSidebar, closeSidebar }: any) => {
         );
     };
 
-    const Clocks = () => {
-        return (
-            <div className={styles.sidebarClocks}>
-                <div className={styles.time} style={{ backgroundColor: theme.palette.primary.main }}>{time}</div>
-            </div>
-        );
-    };
-
     return (
         <div>
             <Drawer
@@ -108,7 +89,7 @@ export const Sidebar = ({ weather, openSidebar, closeSidebar }: any) => {
                 <Divider />
                 <div className={styles.sidebarBodyGroup}>
                     <Body />
-                    <Clocks />
+                    <Clock />
                 </div>
             </Drawer>
         </div>
