@@ -1,5 +1,4 @@
 .main {
-    width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-areas: 
@@ -7,39 +6,26 @@
     ". central ."
     ". forecast .";
     grid-template-columns: 1fr 5fr 1fr;
-    grid-template-rows: 1fr 3fr 2fr;
+    grid-template-rows: 1fr 5fr 3fr;
+    transition: .2s ease-out;
+}
 
+.mainPushed {
+    margin-left: 220px;
+    transition: .2s ease-out;
 }
 
 .central {
     grid-area: central;
-    place-self: center;
-}
-
-.regionInfo {
-    grid-area: regionInfo;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-end;
-    justify-content: flex-start;
-    user-select: none;
-    padding-top: 16px;
-    padding-right: 16px;
-}
-
-.regionDate, .region {
-    font-size: 16px;
-    color: #fff;
-    font-weight: bold;
+    align-self: flex-start;
+    justify-self: center;
 }
 
 .forecast {
     grid-area: forecast;
     grid-column-start: 1;
     grid-column-end: 4;
-    align-self: flex-end;
-    margin-bottom: 16px;
+    align-self: center;
 }
 
 .sidebar {

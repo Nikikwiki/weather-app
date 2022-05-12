@@ -2,15 +2,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import { httpService } from 'http-service';
-import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { CentralInfoComponent, Forecast, Sidebar } from 'components';
+import { CentralInfoComponent, Forecast, RegionInfo, Sidebar } from 'components';
+import clsx from 'clsx';
 import styles from './styles.scss';
 
 export const MainComponent = () => {
     const [ weather, setWeather ] = useState<any>(null);
     const [ forecast, setForecast ] = useState<any>(null);
-    const [ openSidebar, setOpenSidebar ] = useState<boolean>(false);
+    const [ openSidebar, setOpenSidebar ] = useState<boolean>(true);
     const theme = useTheme();
 
     useEffect(() => {
@@ -26,26 +26,27 @@ export const MainComponent = () => {
         });
     }, []);
 
+    const mainStyles = clsx(styles.main, {
+        [styles.mainPushed]: openSidebar
+    });
+
     return (
-        <div>
+        <>
             { weather && forecast && (
                 <>
-                    <div className={styles.main} style={{ backgroundColor: theme.palette.primary.main }}>
+                    <div
+                        className={mainStyles}
+                        style={{ backgroundColor: theme.palette.primary.main }}
+                    >
                         <div className={styles.central}>
                             <CentralInfoComponent weather={weather} />
                         </div>
-                        <div className={styles.regionInfo}>
-                            <div className={styles.regionDate}>{moment(new Date().getTime()).format('DD.MM.YYYY')}</div>
-                            <div className={styles.region}>
-                                {weather.sys.country}
-                                {' '}
-                                -
-                                {' '}
-                                {weather.name}
-                            </div>
-                        </div>
+                        <RegionInfo weather={weather} />
                         <div className={styles.sidebar}>
-                            <IconButton onClick={() => setOpenSidebar(true)}>
+                            <IconButton
+                                onClick={() => setOpenSidebar(true)}
+                                style={openSidebar ? { visibility: 'hidden' } : { visibility: 'visible' }}
+                            >
                                 <MenuIcon />
                             </IconButton>
                         </div>
@@ -60,6 +61,6 @@ export const MainComponent = () => {
                     />
                 </>
             )}
-        </div>
+        </>
     );
 };

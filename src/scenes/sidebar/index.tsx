@@ -69,27 +69,25 @@ export const Sidebar = ({ weather, openSidebar, closeSidebar }: any) => {
     };
 
     return (
-        <div>
-            <Drawer
-                anchor='left'
-                open={openSidebar}
-                variant="persistent"
-                sx={{
-                    minWidth: '220px',
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        minWidth: '220px',
-                        boxSizing: 'border-box'
-                    }
-                }}
-            >
-                <Header />
-                <Divider />
-                <div className={styles.sidebarBodyGroup}>
-                    <Body />
-                    <Clock />
-                </div>
-            </Drawer>
-        </div>
+        <Drawer
+            anchor='left'
+            open={openSidebar}
+            variant="persistent"
+            sx={{
+                width: '220px',
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                    width: '220px',
+                    boxSizing: 'border-box'
+                }
+            }}
+        >
+            <Header />
+            <Divider />
+            <div className={styles.sidebarBodyGroup}>
+                <Body />
+                <Clock />
+            </div>
+        </Drawer>
     );
 };

@@ -5,8 +5,6 @@ import styles from './styles.scss';
 import SunIcon from '../../static/img/sun.svg';
 
 export const Forecast = ({ forecast }: any) => {
-    const weekDays = [ 'Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота' ];
-
     const theme = useTheme();
 
     const selectDays = () => {
@@ -29,14 +27,13 @@ export const Forecast = ({ forecast }: any) => {
             <>
                 {
                     selectDays().map((day: any) => {
-                        const weekDay = new Date(day[0].dt * 1000).getDay();
                         return (
                             <div className={styles.forecastDay} key={day[0].dt.toString()}>
                                 <SunIcon width={150} height={150} className={styles.sun} />
                                 <div className={styles.forecastWeek}>
-                                    {moment(new Date(day[0].dt * 1000)).format('DD MMM ')}
+                                    {moment(new Date(day[0].dt * 1000)).format('DD MMM')}
                                     {', '}
-                                    {weekDays[weekDay]}
+                                    {moment(new Date(day[0].dt * 1000)).format('dddd')}
                                 </div>
                                 <div className={styles.forecastTemp}>
                                     <div>

@@ -26,6 +26,9 @@
 
 .status {
     color: #fff;
-    text-transform: capitalize;
     font-size: 26px;
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
 }
