@@ -11,11 +11,13 @@ export const Forecast = ({ forecast }: any) => {
 
     const selectDays = () => {
         let forecastList: any = [];
-        forecast.list.forEach((day: any) => {
+        let countDays = 0;
+        forecast.list.forEach((day: any, i: number, list: any) => {
             const date = new Date(day.dt * 1000);
             if (date.getDay() !== new Date().getDay()) {
-                if (date.getHours() === 12) {
-                    forecastList.push(day);
+                if (date.getHours() === 15 && countDays < 4) {
+                    countDays++;
+                    forecastList.push([ day, list[i + 4] ]);
                 }
             }
         });
@@ -27,22 +29,22 @@ export const Forecast = ({ forecast }: any) => {
             <>
                 {
                     selectDays().map((day: any) => {
-                        const weekDay = new Date(day.dt * 1000).getDay();
+                        const weekDay = new Date(day[0].dt * 1000).getDay();
                         return (
-                            <div className={styles.forecastDay} key={day.dt.toString()}>
+                            <div className={styles.forecastDay} key={day[0].dt.toString()}>
                                 <SunIcon width={150} height={150} className={styles.sun} />
                                 <div className={styles.forecastWeek}>
-                                    {moment(new Date(day.dt * 1000)).format('DD MMM ')}
+                                    {moment(new Date(day[0].dt * 1000)).format('DD MMM ')}
                                     {', '}
                                     {weekDays[weekDay]}
                                 </div>
                                 <div className={styles.forecastTemp}>
                                     <div>
-                                        {Math.round(day.main.temp)}
+                                        {Math.round(day[0].main.temp)}
                                         °с
                                     </div>
                                     <div style={{ color: theme.palette.text.secondary }}>
-                                        {Math.round(day.main.temp)}
+                                        {Math.round(day[1].main.temp)}
                                         °с
                                     </div>
                                 </div>

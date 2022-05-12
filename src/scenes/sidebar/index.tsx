@@ -75,12 +75,10 @@ export const Sidebar = ({ weather, openSidebar, closeSidebar }: any) => {
                 open={openSidebar}
                 variant="persistent"
                 sx={{
-                    width: '20vw',
-                    minWidth: '260px',
+                    minWidth: '220px',
                     flexShrink: 0,
                     '& .MuiDrawer-paper': {
-                        width: '20vw',
-                        minWidth: '260px',
+                        minWidth: '220px',
                         boxSizing: 'border-box'
                     }
                 }}
