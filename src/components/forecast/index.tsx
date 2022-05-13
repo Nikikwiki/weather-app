@@ -30,7 +30,10 @@ export const Forecast = ({ forecast }: any) => {
                         return (
                             <div
                                 className={styles.forecastDay}
-                                style={{ color: theme.palette.text.primary }}
+                                style={{
+                                    color: theme.palette.text.primary,
+                                    backgroundColor: theme.palette.primary.dark
+                                }}
                                 key={day[0].dt.toString()}
                             >
                                 <WeatherIcon name={day[0].weather[0].icon} size="small" />

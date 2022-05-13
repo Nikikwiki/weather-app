@@ -15,6 +15,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
+
+    color: rgb(255, 255, 255);
+    height: 80px;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px;
 }
 
 .forecastWeek {

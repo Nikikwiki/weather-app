@@ -50,7 +50,7 @@ export const RootScene: React.FC<any> = (): JSX.Element => {
             },
             text: {
                 primary: '#fff',
-                secondary: grey[700]
+                secondary: grey[900]
             }
         }
     });
@@ -59,7 +59,9 @@ export const RootScene: React.FC<any> = (): JSX.Element => {
         <>
             {weather && forecast
             && (
-                <ThemeProvider theme={new Date().getHours() > 7 || new Date().getHours() < 21 ? lightTheme : darkTheme}>
+                <ThemeProvider
+                    theme={new Date().getHours() > 7 || new Date().getHours() < 21 ? lightTheme : darkTheme}
+                >
                     <Main weather={weather} forecast={forecast} />
                 </ThemeProvider>
             )}
