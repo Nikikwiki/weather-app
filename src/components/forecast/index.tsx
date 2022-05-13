@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import { useTheme } from '@mui/material/styles';
+import { WeatherIcon } from 'components/weather-icon';
 import styles from './styles.scss';
-import SunIcon from '../../static/img/sun.svg';
 
 export const Forecast = ({ forecast }: any) => {
     const theme = useTheme();
@@ -29,7 +29,7 @@ export const Forecast = ({ forecast }: any) => {
                     selectDays().map((day: any) => {
                         return (
                             <div className={styles.forecastDay} key={day[0].dt.toString()}>
-                                <SunIcon width={150} height={150} className={styles.sun} />
+                                <WeatherIcon name={day[0].weather[0].icon} size="small" />
                                 <div className={styles.forecastWeek}>
                                     {moment(new Date(day[0].dt * 1000)).format('DD MMM')}
                                     {', '}

@@ -1,5 +1,5 @@
 import React from 'react';
-import SunIcon from '../../static/img/sun.svg';
+import { WeatherIcon } from 'components/weather-icon';
 import styles from './styles.scss';
 
 export const CentralInfoComponent = (props: any) => {
@@ -7,7 +7,9 @@ export const CentralInfoComponent = (props: any) => {
 
     return (
         <div className={styles.content}>
-            <SunIcon width={350} height={350} className={styles.sun} />
+            <div className={styles.svgIcon}>
+                <WeatherIcon name={weather.weather[0].icon} size="large" />
+            </div>
             <div className={styles.description}>
                 <div className={styles.degrees}>
                     {Math.round(weather.main.temp)}
