@@ -1,12 +1,17 @@
 import React from 'react';
 import { WeatherIcon } from 'components/weather-icon';
+import { useTheme } from '@mui/material/styles';
 import styles from './styles.scss';
 
 export const CentralInfoComponent = (props: any) => {
     const { weather } = props;
+    const theme = useTheme();
 
     return (
-        <div className={styles.content}>
+        <div
+            className={styles.content}
+            style={{ color: theme.palette.text.primary }}
+        >
             <div className={styles.svgIcon}>
                 <WeatherIcon name={weather.weather[0].icon} size="large" />
             </div>

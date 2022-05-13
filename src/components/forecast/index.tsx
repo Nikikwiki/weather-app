@@ -28,7 +28,11 @@ export const Forecast = ({ forecast }: any) => {
                 {
                     selectDays().map((day: any) => {
                         return (
-                            <div className={styles.forecastDay} key={day[0].dt.toString()}>
+                            <div
+                                className={styles.forecastDay}
+                                style={{ color: theme.palette.text.primary }}
+                                key={day[0].dt.toString()}
+                            >
                                 <WeatherIcon name={day[0].weather[0].icon} size="small" />
                                 <div className={styles.forecastWeek}>
                                     {moment(new Date(day[0].dt * 1000)).format('DD MMM')}
