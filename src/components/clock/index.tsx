@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import moment from 'moment';
 import styles from './styles.scss';
 
-export const Clock = () => {
+export const Clock = ({ backgroundColor }: any) => {
     const [ time, setTime ] = useState(moment(new Date()).format('LTS'));
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export const Clock = () => {
 
     return (
         <div className={styles.clocks}>
-            <div className={styles.time} style={{ backgroundColor: theme.palette.primary.main }}>{time}</div>
+            <div className={styles.time} style={{ backgroundColor: backgroundColor }}>{time}</div>
         </div>
     );
 };

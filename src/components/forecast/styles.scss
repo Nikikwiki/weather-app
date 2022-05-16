@@ -33,3 +33,9 @@
     gap: 6px;
     margin-top: 8px;
 }
+
+@media all and (max-width: 430px) {
+    .wrapper {
+        row-gap: 64px;
+    }
+}

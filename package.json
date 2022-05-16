@@ -58,6 +58,7 @@
         "moment": "^2.29.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-swipeable-bottom-sheet": "^1.1.2",
         "usehooks-ts": "^2.5.2"
     }
 }

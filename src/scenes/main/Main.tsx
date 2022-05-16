@@ -60,7 +60,8 @@ export const MainComponent = ({ weather, forecast }: any) => {
                 openSidebar={openSidebar}
                 closeSidebar={() => setOpenSidebar(false)}
             />
-            <SwipeBar />
+            { !sidebarMediaMatches
+            && <SwipeBar weather={weather} />}
         </>
     );
 };

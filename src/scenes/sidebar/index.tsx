@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Divider, Drawer, useMediaQuery } from '@mui/material';
+import { Divider, Drawer, useTheme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import moment from 'moment';
@@ -7,6 +7,8 @@ import { Clock } from 'components';
 import styles from './styles.scss';
 
 export const Sidebar = ({ weather, openSidebar, closeSidebar }: any) => {
+    const theme = useTheme();
+
     useEffect(() => {
         const windowSizeChanged = (event: any) => {
             closeSidebar();
@@ -94,7 +96,7 @@ export const Sidebar = ({ weather, openSidebar, closeSidebar }: any) => {
             <Divider />
             <div className={styles.sidebarBodyGroup}>
                 <Body />
-                <Clock />
+                <Clock backgroundColor={theme.palette.primary.dark} />
             </div>
         </Drawer>
     );
