@@ -9,6 +9,7 @@
     grid-template-rows: 1fr 5fr 3fr;
     transition: .2s ease-out;
     overflow: auto;
+    row-gap: 32px;
 }
 
 .mainPushed {
@@ -50,10 +51,14 @@
         transition: .2s ease-out;
         overflow: auto;
     }
+
+    .forecast {
+        margin-top: 120px;
+    }
 }
 
 @media all and (max-width: 430px) {
     .forecast {
-        margin-top: 64px;
+        margin-top: 100px;
     }
 }

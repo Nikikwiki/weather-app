@@ -1,7 +1,7 @@
 const path = require('path');
 
 const CONSTANTS = {
-    DIST_PATH: path.resolve(__dirname, 'dist'),
+    DIST_PATH: path.resolve(__dirname, 'build'),
     SRC_PATH: path.resolve(__dirname, 'src'),
     CONTENT_PATH: path.resolve(__dirname, 'public'),
     ROOT_PATH: path.resolve(__dirname),

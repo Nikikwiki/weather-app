@@ -1,11 +1,14 @@
 {
+    "homepage": "https://Nikikwiki.github.io/weather-app/",
     "name": "sat-selection-module-client",
     "version": "1.0.0",
     "description": "",
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack",
         "start": "cross-env NODE_ENV=development webpack-dev-server",
-        "dev": "cross-env NODE_ENV=development webpack"
+        "dev": "cross-env NODE_ENV=development webpack",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "author": "",
     "license": "ISC",
@@ -55,6 +58,7 @@
         "@mui/material": "^5.7.0",
         "axios": "^0.23.0",
         "clsx": "^1.1.1",
+        "gh-pages": "^4.0.0",
         "moment": "^2.29.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",

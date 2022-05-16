@@ -4,7 +4,8 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 15vw));
     grid-gap: 16px;
     row-gap: 32px;
-    place-content: center;
+    align-content: flex-start;
+    justify-content: center;
 }
 
 .forecastDay {
