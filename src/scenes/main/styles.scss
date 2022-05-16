@@ -8,6 +8,7 @@
     grid-template-columns: 1fr 5fr 1fr;
     grid-template-rows: 1fr 5fr 3fr;
     transition: .2s ease-out;
+    overflow: auto;
 }
 
 .mainPushed {
@@ -26,6 +27,8 @@
     grid-column-start: 1;
     grid-column-end: 4;
     align-self: center;
+    user-select: none;
+    height: 100%;
 }
 
 .sidebar {
@@ -33,4 +36,24 @@
     place-self: start;
     margin-left: 16px;
     margin-top: 16px;
+}
+
+@media all and (max-width: 695px) {
+    .main {
+        height: 100vh;
+        display: grid;
+        grid-template-areas: 
+        "central"
+        "forecast";
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        transition: .2s ease-out;
+        overflow: auto;
+    }
+}
+
+@media all and (max-width: 430px) {
+    .forecast {
+        margin-top: 40px;
+    }
 }

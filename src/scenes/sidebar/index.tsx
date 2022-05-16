@@ -1,5 +1,5 @@
-import React from 'react';
-import { Divider, Drawer } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Divider, Drawer, useMediaQuery } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import moment from 'moment';
@@ -7,6 +7,14 @@ import { Clock } from 'components';
 import styles from './styles.scss';
 
 export const Sidebar = ({ weather, openSidebar, closeSidebar }: any) => {
+    useEffect(() => {
+        const windowSizeChanged = (event: any) => {
+            closeSidebar();
+        };
+
+        window.addEventListener('resize', windowSizeChanged);
+    });
+
     const Header = () => {
         return (
             <div className={styles.sidebarHeader}>
