@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import clsx from 'clsx';
 import { useMediaQuery } from 'usehooks-ts';
+import { SwipeBar } from 'scenes/swipe-bar';
 import styles from './styles.scss';
 
 export const MainComponent = ({ weather, forecast }: any) => {
@@ -59,6 +60,7 @@ export const MainComponent = ({ weather, forecast }: any) => {
                 openSidebar={openSidebar}
                 closeSidebar={() => setOpenSidebar(false)}
             />
+            <SwipeBar />
         </>
     );
 };
