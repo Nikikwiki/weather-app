@@ -1,12 +1,23 @@
 import React from 'react';
-import { useTheme } from '@mui/material';
+import { Box, Divider, styled, useTheme } from '@mui/material';
 import SwipeableBottomSheet from 'react-swipeable-bottom-sheet';
 import moment from 'moment';
 import { Clock, RegionInfo } from 'components';
+import { grey } from '@mui/material/colors';
 import styles from './styles.scss';
 
 export const SwipeBar = ({ weather }: any) => {
     const theme = useTheme();
+
+    const Puller = styled(Box)(() => ({
+        width: 30,
+        height: 6,
+        backgroundColor: theme.palette.mode === 'light' ? grey[300] : grey[200],
+        borderRadius: 3,
+        position: 'absolute',
+        top: 8,
+        left: 'calc(50% - 15px)'
+    }));
 
     const Body = () => {
         return (
@@ -56,7 +67,7 @@ export const SwipeBar = ({ weather }: any) => {
     };
 
     return (
-        <SwipeableBottomSheet overflowHeight={64}>
+        <SwipeableBottomSheet overflowHeight={50}>
             <div
                 className={styles.swipeTitle}
                 style={{
@@ -64,7 +75,7 @@ export const SwipeBar = ({ weather }: any) => {
                     color: theme.palette.text.primary
                 }}
             >
-                Сейчас
+                <Puller />
             </div>
             <div
                 className={styles.swipeMain}
@@ -73,6 +84,10 @@ export const SwipeBar = ({ weather }: any) => {
                     backgroundColor: theme.palette.primary.dark
                 }}
             >
+                <div className={styles.text}>
+                    Сейчас
+                </div>
+                <Divider />
                 <div className={styles.top}>
                     <Body />
                     <RegionInfo weather={weather} />

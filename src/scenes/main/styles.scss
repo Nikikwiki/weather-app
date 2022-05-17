@@ -9,7 +9,7 @@
     grid-template-rows: 1fr 5fr 3fr;
     transition: .2s ease-out;
     overflow: auto;
-    row-gap: 32px;
+    row-gap: 54px;
 }
 
 .mainPushed {
@@ -30,6 +30,7 @@
     align-self: center;
     user-select: none;
     height: 100%;
+    margin-bottom: 16px;
 }
 
 .sidebar {
@@ -50,15 +51,16 @@
         grid-template-columns: 1fr;
         transition: .2s ease-out;
         overflow: auto;
+        row-gap: 74px;
     }
 
     .forecast {
-        margin-top: 120px;
+        margin-bottom: 50px;
     }
 }
 
-@media all and (max-width: 430px) {
-    .forecast {
-        margin-top: 100px;
-    }
-}
+// @media all and (max-width: 430px) {
+//     .forecast {
+//         margin-top: 100px;
+//     }
+// }
