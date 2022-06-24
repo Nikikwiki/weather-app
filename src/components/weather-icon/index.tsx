@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import clsx from 'clsx';
 import React, { FC, SVGProps, useEffect, useRef } from 'react';
 import styles from './styles.scss';
@@ -29,9 +30,10 @@ export const WeatherIcon: FC<IconProps> = ({ name, size, ...rest }): JSX.Element
         [styles.small]: size === 'small'
     });
 
-    if (!loading && ImportedIconRef.current) {
+    if (ImportedIconRef.current) {
         const { current: ImportedIcon } = ImportedIconRef;
-        return <ImportedIcon {...rest} className={iconStyles} />;
-    }
-    return null;
+        return (loading ? <CircularProgress color='inherit' size={50} thickness={5} />
+            : <ImportedIcon {...rest} className={iconStyles} />);
+    } else return <CircularProgress color='inherit' size={50} thickness={5} />;
+    // return null;
 };

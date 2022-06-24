@@ -1,5 +1,5 @@
 .large {
-    transform: translate(125px, 125px) scale(7);
+    transform: translate(0, 0) scale(7);
     max-width: 100%;
 }
 
@@ -9,19 +9,19 @@
 
     position: absolute;
     top: -35px;
-    left: 60px;
+    left: 75px;
 }
 
 @media all and (max-width: 695px) {
     .large {
-        transform: translate(125px, 125px) scale(6);
+        transform: translate(0, 0) scale(6);
         max-width: 100%;
     }
 }
 
 @media all and (max-width: 430px) {
     .large {
-        transform: translate(125px, 125px) scale(5);
+        transform: translate(0, 0) scale(5);
         max-width: 100%;
     }
 }
